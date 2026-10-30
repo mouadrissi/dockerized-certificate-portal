@@ -1,0 +1,27 @@
+# Environnement virtuel
+mon_env/
+venv/
+
+# Fichiers de compilation Python
+__pycache__/
+*.pyc
+*.pyo
+
+# Base de données locale
+db.sqlite3
+
+# Fichiers médias et documents générés
+*.pdf
+*.png
+attestations/
+qr_codes/
+media/
+
+# Variables d'environnement (Sécurité)
+.env
+
+# Fichiers système et éditeurs
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

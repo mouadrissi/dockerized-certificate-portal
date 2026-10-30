@@ -1,0 +1,35 @@
+# Git
+.git
+.gitignore
+
+# Environnements Virtuels Python
+mon_env/
+venv/
+env/
+.env
+
+# Fichiers Cache Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+
+# Base de données locale 
+*.sqlite3
+db.sqlite3
+
+# Fichiers de développement et IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Fichiers Log
+*.log
+
+# Les archives
+PFA.rar
+PFA_2.rar
+*.zip
+*.tar.gz

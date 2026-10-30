@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-5 mb-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6 col-sm-12 text-center">
+            
+            {% if status == 'valide' %}
+                <div class="card shadow border-success mb-3">
+                    <div class="card-header bg-success text-white py-3">
+                        <h2 class="mb-0"><i class="bi bi-check-circle-fill"></i> Document Authentique</h2>
+                    </div>
+                    <div class="card-body py-5">
+                        <p class="text-muted mb-4">Ce document a été émis officiellement par l'EMSI et est actuellement valide.</p>
+                        
+                        <div class="text-start bg-light p-4 rounded">
+                            <p><strong>N° de l'attestation :</strong><br> <small class="text-muted">{{ attestation.numero_unique }}</small></p>
+                            <p><strong>Émise le :</strong><br> {{ attestation.date_generation|date:"d F Y" }}</p>
+                            <p><strong>Bénéficiaire :</strong><br> {{ attestation.demande.beneficiaire.utilisateur.get_full_name }}</p>
+                            <p><strong>Type de document :</strong><br> {{ attestation.demande.type_demande.libelle }}</p>
+                        </div>
+                    </div>
+                </div>
+
+            {% elif status == 'annulee' %}
+                <div class="card shadow border-danger mb-3">
+                    <div class="card-header bg-danger text-white py-3">
+                        <h2 class="mb-0"><i class="bi bi-x-octagon-fill"></i> Document Invalide</h2>
+                    </div>
+                    <div class="card-body py-5">
+                        <h4 class="text-danger">Cette attestation a été révoquée.</h4>
+                        <p>Le document correspondant au numéro <strong>{{ attestation.numero_unique }}</strong> n'est plus reconnu comme valide par nos services.</p>
+                    </div>
+                </div>
+
+            {% else %}
+                <div class="card shadow border-secondary mb-3">
+                    <div class="card-header bg-secondary text-white py-3">
+                        <h2 class="mb-0"><i class="bi bi-search"></i> Document Introuvable</h2>
+                    </div>
+                    <div class="card-body py-5">
+                        <h4 class="text-secondary">Aucune correspondance.</h4>
+                        <p>Ce code QR ou numéro de vérification ne correspond à aucun document émis par notre système. Il s'agit potentiellement d'un document falsifié.</p>
+                    </div>
+                </div>
+            {% endif %}
+
+        </div>
+    </div>
+</div>
+{% endblock %}
